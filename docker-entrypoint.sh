@@ -8,10 +8,9 @@ if [[ "$1" == "-"* || -z $1 ]]; then
   curl -sSL http://mirrors.jenkins-ci.org/war/${JENKINS_VERSION}/jenkins.war --output ${JENKINS_HOME}/jenkins.war
   chown ${JENKINS_USER}:${JENKINS_GROUP} ${JENKINS_HOME}/jenkins.war
 
-  credentials ssh-credentials ssh-agent ssh-slaves git-client git github github-api github-oauth github-pullrequest ghprb scm-api simple-theme-plugin shiningpanda slack swarm
   if [ -z "$JENKINS_PLUGINS" ]; then
       for plugin in ${JENKINS_PLUGINS}; do
-        curl -sSL http://updates.jenkins-ci.org/latest/${plugin}.hpi --output $JENKINS_VOL/${plugin}.hpi
+        echo curl -sSL http://updates.jenkins-ci.org/latest/${plugin}.hpi --output $JENKINS_VOL/${plugin}.hpi
       done
   fi
 

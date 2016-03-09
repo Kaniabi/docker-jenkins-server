@@ -9,6 +9,7 @@ ENV JENKINS_GROUP jenkins
 ENV JENKINS_HOME /opt/jenkins
 ENV JENKINS_VOL /var/lib/jenkins
 ENV TIMEZONE America/Sao_Paulo
+ENV JENKINS_PLUGINS="git github github-api github-oauth github-pullrequest ghprb scm-api simple-theme-plugin shiningpanda slack swarm"
 
 # Install software
 RUN apk update \
@@ -18,7 +19,7 @@ RUN apk update \
     && addgroup ${JENKINS_GROUP} \
     && adduser -h ${JENKINS_HOME} -D -s /bin/bash -G ${JENKINS_GROUP} ${JENKINS_USER} \
     && chown -R ${JENKINS_USER}:${JENKINS_GROUP} ${JENKINS_HOME} ${JENKINS_VOL} \
-    && for plugin in credentials ssh-credentials ssh-agent ssh-slaves git-client git github github-api github-oauth github-pullrequest ghprb scm-api simple-theme-plugin shiningpanda slack swarm ; do  curl -sSL http://updates.jenkins-ci.org/latest/${plugin}.hpi --output $JENKINS_VOL/${plugin}.hpi; done \
+    && for plugin in credentials ssh-credentials ssh-agent ssh-slaves git-client ; do  curl -sSL http://updates.jenkins-ci.org/latest/${plugin}.hpi --output $JENKINS_VOL/${plugin}.hpi; done \
     && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo ${TIMEZONE} > /etc/timezone \
     && apk del tzdata
