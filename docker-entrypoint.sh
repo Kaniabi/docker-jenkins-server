@@ -14,7 +14,7 @@ if [[ "$1" == "-"* || -z $1 ]]; then
       done
   fi
 
-  exec java -jar /opt/jenkins/jenkins.war "$@"
+  exec java $JAVA_OPTS -jar /opt/jenkins/jenkins.war "$@"
 else
   exec "$@"
 fi
