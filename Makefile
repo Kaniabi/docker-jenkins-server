@@ -1,5 +1,5 @@
 NAME = kaniabi/jenkins-server
-VERSION = 0.3
+VERSION = 0.4.0
 
 .PHONY: all build test latest release
 
@@ -11,4 +11,4 @@ run:
 	sudo docker run -d --publish 9090:8080 --name jenkins-server $(NAME):latest
 
 build:
-	sudo docker build -t $(NAME):latest .
+	sudo docker build -t $(NAME):latest -t $(NAME):$(VERSION) .
