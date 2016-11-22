@@ -1,0 +1,11 @@
+image: docker:1.11-dind
+stages:
+  - build
+build:
+  stage: build
+  script:
+    - make build
+    - make push
+  tags:
+    - docker-builder
+

@@ -14,7 +14,7 @@ RUN echo "root:chucknorris" | chpasswd  &&\
 
 
 ### JAVA (openjdk):
-RUN apt-get install --no-install-recommends -y curl openjdk-8-jre-headless
+RUN apt-get install --no-install-recommends -y curl openjdk-8-jre-headless git
 
 
 ### JENKINS:

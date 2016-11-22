@@ -1,5 +1,5 @@
 NAME = kaniabi/jenkins-server
-VERSION = 0.4.0
+VERSION = 0.4.1
 
 .PHONY: all build test latest release
 
@@ -12,3 +12,6 @@ run:
 
 build:
 	sudo docker build -t $(NAME):latest -t $(NAME):$(VERSION) .
+
+push:
+	sudo docker push $(NAME):latest $(NAME):$(VERSION)
