@@ -9,12 +9,11 @@ RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime  &&\
     echo ${TIMEZONE} > /etc/timezone
 
 ### Update and root password.
-RUN echo "root:chucknorris" | chpasswd  &&\
-    apt-get update
+RUN echo "root:chucknorris" | chpasswd
 
 
-### JAVA (openjdk):
-RUN apt-get install --no-install-recommends -y curl openjdk-8-jre-headless git
+### Install packages
+RUN apt-get update && apt-get install --no-install-recommends -y curl openjdk-8-jre-headless git
 
 
 ### JENKINS:
